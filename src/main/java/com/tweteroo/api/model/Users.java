@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Users {
      
     public Users(UserDTO req){
-        this.username = req.userName();
+        this.username = req.username();
         this.avatar = req.avatar();
     }
 
