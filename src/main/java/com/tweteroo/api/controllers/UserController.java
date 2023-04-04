@@ -28,7 +28,7 @@ public class UserController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public String create(@RequestBody @Valid UserDTO req) {
         service.save(req);
-        return "user created successfully";
+        return "OK";
     }
     
 }
