@@ -14,21 +14,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class Users {
-     
-    public Users(UserDTO req){
+
+    public Users(UserDTO req) {
         this.username = req.username();
         this.avatar = req.avatar();
     }
 
-
     @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-   
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     @Column(length = 50, nullable = false, unique = true)
-	private String username;
+    private String username;
 
     @Column(nullable = false)
-	private String avatar;
-    
+    private String avatar;
+
 }
