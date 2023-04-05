@@ -1,7 +1,10 @@
 package com.tweteroo.api.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 
 import com.tweteroo.api.dto.TweetDTO;
 import com.tweteroo.api.model.Tweet;
@@ -27,6 +30,11 @@ public class TweetService {
         } else {
             return "user does not exist";
         }
+    }
+
+
+    public List<Tweet> findLastFiveTweets(Pageable pageable) {
+        return tweetsRepository.findAll(pageable).getContent();
     }
 
 
