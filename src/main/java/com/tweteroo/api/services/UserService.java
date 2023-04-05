@@ -12,7 +12,13 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public Users save(UserDTO data) {
-        return repository.save(new Users(data));
+    public String save(UserDTO data) {
+        Users isUserExistent = repository.findByUsername(data.username());
+        if (isUserExistent == null) {
+             repository.save(new Users(data));
+             return "OK";
+        } else {
+            return "user alredy exists";
+        }
     }
 }

@@ -27,8 +27,8 @@ public class UserController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public String create(@RequestBody @Valid UserDTO req) {
-        service.save(req);
-        return "OK";
+        return service.save(req);
+       
     }
     
 }
