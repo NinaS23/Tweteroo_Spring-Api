@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +37,15 @@ public class TweetController {
     }
     
     @GetMapping
-    public ResponseEntity<List<Tweet>> getLastFiveTweets(@PageableDefault(page = 0, size = 5) Pageable pageable) {
-        return ResponseEntity.ok(service.findLastFiveTweets(pageable));
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Tweet> getLastFiveTweets(@PageableDefault(page = 0, size = 5) Pageable pageable) {
+        return service.findLastFiveTweets(pageable);
+    }
+
+    @GetMapping("/{username}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public List<Tweet> getTweetsByUser(@PathVariable String username){
+       return service.getUserTweets(username);
     }
 
 

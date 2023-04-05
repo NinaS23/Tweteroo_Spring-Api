@@ -24,7 +24,7 @@ public class TweetService {
     public String save(TweetDTO data) {
         Users isUserExistent = userRepository.findByUsername(data.username());
 
-        if(isUserExistent != null) {
+        if (isUserExistent != null) {
             tweetsRepository.save(new Tweet(data.username(), isUserExistent.getAvatar(), data.tweet()));
             return "OK";
         } else {
@@ -32,10 +32,12 @@ public class TweetService {
         }
     }
 
-
     public List<Tweet> findLastFiveTweets(Pageable pageable) {
         return tweetsRepository.findAll(pageable).getContent();
     }
 
+    public List<Tweet> getUserTweets(String username) {
+        return tweetsRepository.findAllByUsername(username);
+    }
 
 }
