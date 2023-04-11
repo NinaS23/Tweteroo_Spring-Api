@@ -26,7 +26,7 @@ To clone the project, run the following command:
 ```git
 git clone https://github.com/NinaS23/Tweteroo_spring-api.git
 ```
-Then navigate to the project folder in ApiApplication.java and:
+Then navigate to the project file in ApiApplication.java and:
 
 ```git
 run the project
